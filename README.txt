@@ -7,6 +7,7 @@
 Merge PDFs using iText.
 
 == EXAMPLE:
+require "pdf/merger"
 pdf = PDF::Merger.new
 pdf.add_file "foo.pdf"
 pdf.add_file "bar.pdf"
