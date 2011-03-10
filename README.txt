@@ -17,6 +17,13 @@ pdf.save_as "combined.pdf"
 
 $ sudo gem install pdf-merger
 
+== ENCODING:
+
+On some systems, such as Linux, you need to manually set the encoding. If you don't do that, merging will fail with a java.io.IOEXception (not found as file or resource). 
+
+I added this line to my environments/production.rb to fix the problem:
+ENV["LC_ALL"] = "en_US.utf8"
+
 == CODE:
 
 $ git clone http://github.com/paulschreiber/pdf-merger/
