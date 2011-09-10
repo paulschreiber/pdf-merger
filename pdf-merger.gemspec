@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/pdf/merger.rb",
     "lib/pdf/merger/jruby.rb",
     "lib/pdf/merger/rjb.rb",
+    "pdf-merger.gemspec",
     "spec/pdf_merger_spec.rb",
     "spec/test_template.pdf"
   ]
