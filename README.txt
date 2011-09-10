@@ -1,6 +1,6 @@
 = pdf/merger - PDF Merging
-  http://github.com/paulschreiber/pdf-merger/
-  by Paul Schreiber
+http://github.com/paulschreiber/pdf-merger/
+by Paul Schreiber
 
 == DESCRIPTION:
 

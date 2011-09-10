@@ -1,6 +1,6 @@
 $:.unshift File.join(File.dirname(__FILE__), "lib")
 require 'pdf/merger'
-require 'spec/rake/spectask'
+require 'hoe'
 
 %w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
 
@@ -25,9 +25,3 @@ end
 
 require 'newgem/tasks' # load /tasks/*.rake
 Dir['tasks/**/*.rake'].each { |t| load t }
-
-Spec::Rake::SpecTask.new do |t|
-  t.spec_files = FileList['spec/*_spec.rb']
-  t.warning = true
-  t.rcov = false
-end
