@@ -1,6 +1,6 @@
 == 0.1.1 2011-09-10
 
-* Updated README and Rakefile.
+* No code changes. Updated README, Rakefile, Gemfile.
 
 == 0.1.0 2010-09-25
 

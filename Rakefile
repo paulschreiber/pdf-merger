@@ -1,27 +1,53 @@
-$:.unshift File.join(File.dirname(__FILE__), "lib")
-require 'pdf/merger'
-require 'hoe'
+# encoding: utf-8
 
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
+require 'rubygems'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+require 'rake'
 
-$hoe = Hoe.new('pdf-merger', PDF::Merger::VERSION) do |p|
-  p.name = 'pdf-merger'
-  p.author = 'Paul Schreiber'
-  p.email = 'paulschreiber@gmail.com'
-  p.summary = "PDF templates using iText's PdfCopyFile. Merge multiple PDFs in to one."
-  p.description = p.paragraphs_of('README.txt', 2..5).join("\n\n")
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
-  ]
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+  gem.name = "pdf-merger"
+  gem.homepage = "http://github.com/paulschreiber/pdf-merger"
+  gem.license = "MIT"
+  gem.summary = %Q{Merge PDFs.}
+  gem.description = %Q{Merge multiple PDFs in to one using iText's PdfCopyFile.}
+  gem.email = "paulschreiber@gmail.com"
+  gem.authors = ["Paul Schreiber"]
+  # dependencies defined in Gemfile
+end
+Jeweler::RubygemsDotOrgTasks.new
 
-  # p.spec_extras['platform'] = 'jruby' # JRuby gem created, e.g. pdf-merger-X.Y.Z-jruby.gem
-  
-  p.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
-  p.rsync_args = '-av --delete --ignore-errors'
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
 end
 
-require 'newgem/tasks' # load /tasks/*.rake
-Dir['tasks/**/*.rake'].each { |t| load t }
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |test|
+  test.libs << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+  test.rcov_opts << '--exclude "gems/*"'
+end
+
+task :default => :test
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "pdf-merger #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
