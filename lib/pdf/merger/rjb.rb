@@ -19,6 +19,7 @@ module PDF
   # Check the RJB documentation if you are having issues with this.
   class Merger
     # Saves the PDF into a file defined by path given.
+    # return the number of pages in the new file
     def save_as(output_file_path)
       @pdfreader     = Rjb::import('com.lowagie.text.pdf.PdfReader')
       @pdfcopyfields = Rjb::import('com.lowagie.text.pdf.PdfCopyFields')
@@ -32,6 +33,7 @@ module PDF
       end
       
       copy.close()
+      @pdfreader.new(output_file_path).getNumberOfPages
     end
   
   end

@@ -1,3 +1,7 @@
+== 0.1.2 2011-09-26
+
+* save_as returns the number of pages in the new file
+
 == 0.1.1 2011-09-10
 
 * No code changes. Updated README, Rakefile, Gemfile.

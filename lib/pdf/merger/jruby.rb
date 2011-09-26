@@ -14,6 +14,7 @@ module PDF
   class Merger
 
     # Saves the PDF into a file defined by path given.
+    # return the number of pages in the new file
     def save_as(output_file_path)
       filestream = FileOutputStream.new(output_file_path)
       copy = PdfCopyFields.new(filestream)
@@ -23,6 +24,7 @@ module PDF
       end
       
       copy.close()
+      PdfReader.new(output_file_path).getNumberOfPages
     end
   
   end
