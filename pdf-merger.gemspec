@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pdf-merger"
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Schreiber"]
-  s.date = "2011-09-26"
+  s.date = "2012-04-26"
   s.description = "Merge multiple PDFs in to one using iText's PdfCopyFile."
   s.email = "paulschreiber@gmail.com"
   s.extra_rdoc_files = [
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/paulschreiber/pdf-merger"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.15"
   s.summary = "Merge PDFs."
 
   if s.respond_to? :specification_version then
