@@ -1,6 +1,6 @@
 # = pdf/merger/rjb.rb -- PDF template stamping.
 #
-#  Copyright (c) 2010 Paul Schreiber
+#  Copyright 2010-12 Paul Schreiber
 
 require 'rubygems'
 require 'rjb'
@@ -31,6 +31,8 @@ module PDF
       @files_to_merge.each do |f|
         copy.addDocument(@pdfreader.new(f))
       end
+      
+      copy.addJavaScript(@js) if @js.present?
       
       copy.close()
       @pdfreader.new(output_file_path).getNumberOfPages

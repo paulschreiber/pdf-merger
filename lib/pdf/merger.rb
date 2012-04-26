@@ -1,6 +1,6 @@
 # = pdf/merger.rb -- PDF merging
 #
-#  Copyright (c) 2010 Paul Schreiber
+#  Copyright 2010-12 Paul Schreiber
 
 require 'rbconfig'
 require 'fileutils'
@@ -29,6 +29,11 @@ module PDF
     
     def initialize
       @files_to_merge = []
+      @js = nil
+    end
+    
+    def add_javascript(js)
+      @js = js
     end
     
     def add_file(file_path)

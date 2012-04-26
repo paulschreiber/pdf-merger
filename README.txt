@@ -10,6 +10,7 @@ require "pdf/merger"
 pdf = PDF::Merger.new
 pdf.add_file "foo.pdf"
 pdf.add_file "bar.pdf"
+pdf.add_javascript "this.print(true);"
 pdf.save_as "combined.pdf"
 
 == Encoding
@@ -21,5 +22,5 @@ ENV["LC_ALL"] = "en_US.utf8"
 
 == License
 
-Copyright (c) 2011 Paul Schreiber. Released under the MIT License.
+Copyright 2010-12 Paul Schreiber. Released under the MIT License.
 See LICENSE.txt for further details.

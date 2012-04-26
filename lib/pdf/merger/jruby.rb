@@ -1,6 +1,6 @@
 # = pdf/merger/rjb.rb -- PDF template stamping.
 #
-#  Copyright (c) 2010 Paul Schreiber
+#  Copyright 2010-12 Paul Schreiber
 
 $:.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'ext'))
 require 'java'
@@ -22,6 +22,8 @@ module PDF
       @files_to_merge.each do |f|
         copy.addDocument(PdfReader.new(f))
       end
+
+      copy.addJavaScript(@js) if @js.present?
       
       copy.close()
       PdfReader.new(output_file_path).getNumberOfPages
