@@ -10,7 +10,7 @@ include FileUtils
 
 module PDF
   class Merger
-    VERSION = "0.1.2"
+    VERSION = "0.3.0"
     
     if RUBY_PLATFORM =~ /java/ # ifdef to check if your using JRuby
       require 'pdf/merger/jruby'

@@ -7,11 +7,12 @@ Merge PDFs using iText.
 == Example
 
 require "pdf/merger"
+failure_list = []
 pdf = PDF::Merger.new
 pdf.add_file "foo.pdf"
 pdf.add_file "bar.pdf"
 pdf.add_javascript "this.print(true);"
-pdf.save_as "combined.pdf"
+pdf.save_as "combined.pdf", failure_list
 
 == Encoding
 

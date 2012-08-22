@@ -18,9 +18,11 @@ module PDF
   #
   # Check the RJB documentation if you are having issues with this.
   class Merger
+
     # Saves the PDF into a file defined by path given.
-    # return the number of pages in the new file
-    def save_as(output_file_path)
+    # - return the number of pages in the new file
+    # - populate failure_list with paths of missing or invalid PDFs
+    def save_as(output_file_path, failure_list=[])
       @pdfreader     = Rjb::import('com.lowagie.text.pdf.PdfReader')
       @pdfcopyfields = Rjb::import('com.lowagie.text.pdf.PdfCopyFields')
       @filestream    = Rjb::import('java.io.FileOutputStream')
@@ -29,13 +31,26 @@ module PDF
       copy = @pdfcopyfields.new(filestream)
       
       @files_to_merge.each do |f|
-        copy.addDocument(@pdfreader.new(f))
+        if File.exists?(f)
+          begin
+            copy.addDocument(@pdfreader.new(f))
+          rescue => e
+            failure_list << f
+            Rails.logger.warn "PDF::Merger: Invalid PDF: #{f}"            
+          end
+        else
+          failure_list << f
+          Rails.logger.warn "PDF::Merger: File does not exist: #{f}"
+        end
       end
       
-      copy.addJavaScript(@js) if @js.present?
-      
-      copy.close()
-      @pdfreader.new(output_file_path).getNumberOfPages
+      if @files_to_merge.size - failure_list.size > 0
+        copy.addJavaScript(@js) if @js.present?
+        copy.close()
+        @pdfreader.new(output_file_path).getNumberOfPages
+      else
+        0
+      end
     end
   
   end
