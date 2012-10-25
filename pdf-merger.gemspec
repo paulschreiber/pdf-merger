@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pdf-merger"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Schreiber"]
-  s.date = "2012-08-22"
+  s.date = "2012-10-25"
   s.description = "Merge multiple PDFs in to one using iText's PdfCopyFile."
   s.email = "paulschreiber@gmail.com"
   s.extra_rdoc_files = [

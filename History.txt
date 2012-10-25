@@ -1,3 +1,6 @@
+== 0.3.1 2012-10-25
+* use java_import instead of include_class (include_class deprecated in jruby 1.7.0)
+
 == 0.3.0 2012-08-22
 * instead of failing completely, merge the valid files and return an array of missing and invalid PDFs
 

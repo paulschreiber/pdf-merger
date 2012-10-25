@@ -6,9 +6,9 @@ $:.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'ext'))
 require 'java'
 require 'iText-4.2.0.jar'
 
-include_class 'java.io.FileOutputStream'
-include_class 'com.lowagie.text.pdf.PdfReader'
-include_class 'com.lowagie.text.pdf.PdfCopyFields'
+java_import 'java.io.FileOutputStream'
+java_import 'com.lowagie.text.pdf.PdfReader'
+java_import 'com.lowagie.text.pdf.PdfCopyFields'
 
 module PDF
   class Merger
