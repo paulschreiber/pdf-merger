@@ -45,7 +45,7 @@ module PDF
       end
       
       if @files_to_merge.size - failure_list.size > 0
-        copy.addJavaScript(@js) if @js.present?
+        copy.addJavaScript(@js) if @js && !@js.empty?
         copy.close()
         @pdfreader.new(output_file_path).getNumberOfPages
       else
