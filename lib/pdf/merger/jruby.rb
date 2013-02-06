@@ -26,11 +26,11 @@ module PDF
             copy.addDocument(PdfReader.new(f))
           rescue => e
             failure_list << f
-            Rails.logger.warn "PDF::Merger: Invalid PDF: #{f}"            
+            log "PDF::Merger: Invalid PDF: #{f}"            
           end
         else
           failure_list << f
-          Rails.logger.warn "PDF::Merger: File does not exist: #{f}"
+          log "PDF::Merger: File does not exist: #{f}"
         end
       end
       
