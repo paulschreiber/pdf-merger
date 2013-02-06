@@ -39,6 +39,14 @@ module PDF
     def add_file(file_path)
       @files_to_merge << file_path
     end
+
+    def log(message)
+      if defined? Rails
+        Rails.logger.warn message
+      else
+        puts message
+      end
+    end
         
   end
 end
