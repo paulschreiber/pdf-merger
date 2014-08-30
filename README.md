@@ -84,5 +84,5 @@ I added this line to my `environments/production.rb` to fix the problem:
 
 ## License
 
-Copyright 2010-12 Paul Schreiber. Released under the MIT License.
+Copyright 2010-14 Paul Schreiber. Released under the MIT License.
 See LICENSE.txt for further details.

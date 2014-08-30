@@ -1,6 +1,6 @@
 # = pdf/merger/rjb.rb -- PDF template stamping.
 #
-#  Copyright 2010-12 Paul Schreiber
+#  Copyright 2010-14 Paul Schreiber
 
 $:.unshift(File.join(File.dirname(__FILE__), '..', '..', '..', 'ext'))
 require 'java'
