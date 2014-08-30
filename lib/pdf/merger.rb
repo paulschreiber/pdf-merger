@@ -10,8 +10,8 @@ include FileUtils
 
 module PDF
   class Merger
-    VERSION = "0.3.1"
-    
+    VERSION = "0.3.2"
+
     if RUBY_PLATFORM =~ /java/ # ifdef to check if your using JRuby
       require 'pdf/merger/jruby'
     else
@@ -26,16 +26,16 @@ module PDF
     # pdf.add_file "foo.pdf"
     # pdf.add_file "bar.pdf"
     # pdf.save_as "combined.pdf"
-    
+
     def initialize
       @files_to_merge = []
       @js = nil
     end
-    
+
     def add_javascript(js)
       @js = js
     end
-    
+
     def add_file(file_path)
       @files_to_merge << file_path
     end
@@ -47,7 +47,7 @@ module PDF
         puts message
       end
     end
-        
+
   end
 end
-    
+

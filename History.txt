@@ -1,3 +1,7 @@
+== 0.3.2 2014-08-30
+* updated gems/dependencies for Ruby 1.9+
+* documentation updated
+
 == 0.3.1 2012-10-25
 * use java_import instead of include_class (include_class deprecated in jruby 1.7.0)
 
