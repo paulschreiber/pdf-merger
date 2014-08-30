@@ -19,29 +19,29 @@ module PDF
     def save_as(output_file_path, failure_list=[])
       filestream = FileOutputStream.new(output_file_path)
       copy = PdfCopyFields.new(filestream)
-      
+
       @files_to_merge.each do |f|
         if File.exists?(f)
           begin
             copy.addDocument(PdfReader.new(f))
           rescue => e
             failure_list << f
-            Rails.logger.warn "PDF::Merger: Invalid PDF: #{f}"
+            log "PDF::Merger: Invalid PDF: #{f}"
           end
         else
           failure_list << f
-          Rails.logger.warn "PDF::Merger: File does not exist: #{f}"
+          log "PDF::Merger: File does not exist: #{f}"
         end
       end
-      
+
       if @files_to_merge.size - failure_list.size > 0
-        copy.addJavaScript(@js) if @js.present?
+        copy.addJavaScript(@js) if @js && !@js.empty?
         copy.close()
         PdfReader.new(output_file_path).getNumberOfPages
       else
         0
       end
     end
-  
+
   end
 end
