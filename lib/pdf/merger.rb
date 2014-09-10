@@ -13,9 +13,9 @@ module PDF
     VERSION = "0.3.2"
 
     if RUBY_PLATFORM =~ /java/ # ifdef to check if your using JRuby
-      require 'pdf/merger/jruby'
+      require_relative "./merger/jruby.rb"
     else
-      require 'pdf/merger/rjb'
+      require_relative "./merger/rjb.rb"
     end
     # PDF::Merger provides an interface into iText allowing for the
     # merging of PDFs.
